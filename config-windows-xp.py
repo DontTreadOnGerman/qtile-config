@@ -33,9 +33,9 @@ from libqtile.config import Click, Drag, Key, Match, Screen, Group
 from libqtile.lazy import lazy
 
 
-@hook.subscribe.startup
-def autostart():
-    subprocess.run([f'sh', f'/home/dtog/.config/qtile/autostart.sh'])
+#@hook.subscribe.startup
+#def autostart():
+#    subprocess.run([f'sh', f'/home/dtog/.config/qtile/autostart.sh'])
 
 
 file = yaml.safe_load(open("/home/dtog/.config/qtile/config.yaml"))
@@ -124,31 +124,52 @@ extension_defaults = widget_defaults.copy()
 
 colors = [["#222222", "#222222"],
           ["#5BD59B", "#5BD59B"],
-          ["#725cac", "#725cac"]]
+          ["#725cac", "#725cac"],
+          ["#328432", "#328432"],
+          ["#215ace", "#215ace"],
+          ["#0598f7", "#0598f7"],
+          ["#0d79bf", "#0d79bf"],
+          ["#ffffff", "#ffffff"],
+          ["#00d4ff", "#00d4ff"],]
+# Black 0
+# Green 1
+# Purple 2
+# Windows XP Green 3
+# Windows XP Dark Blue 4
+# Windows XP Light Blue 5
+# Windows XP Darker-Light Blue 6
+# White 7
+# Cyan 8
+
 
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length=5),
+                widget.Spacer(length=5, background=colors[3]),
                 widget.GroupBox(
-                    active=colors[1],
-                    inactive=colors[2]
+                    active=colors[8],
+                    inactive=colors[7],
+                    background=colors[3]
                 ),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(chords_colors={'launch': tuple(colors[0])}, name_transform=lambda name: name.upper(),),
-                widget.Systray(),
-                widget.Spacer(length=8),
-                widget.Volume(background=colors[1], fmt="Volume {}", foreground=colors[0]),
-                widget.Net(interface="wlp4s0", format="{down}↓↑{up}", background=colors[2]),
-                widget.TextBox(text=f"Linux {str(os.uname().release)}", background=colors[1], foreground=colors[0]),
-                widget.Spacer(length=4, background=colors[2]),
-                widget.Clock(format='%A, %Y-%m-%d %I:%M:%S %p', background=colors[2]),
-                widget.Spacer(length=7, background=colors[2]),
+                widget.Spacer(length=4, background=colors[7]),
+                widget.Systray(background=colors[5]),
+                widget.Spacer(length=4, background=colors[5]),
+                widget.Spacer(length=4, background=colors[7]),
+                widget.Volume(background=colors[5], fmt="Volume {}"),
+                widget.Spacer(length=4, background=colors[7]),
+                widget.Net(interface="wlp4s0", format="{down}↓↑{up}", background=colors[5]),
+                widget.Spacer(length=4, background=colors[7]),
+                widget.TextBox(text=f"Linux {str(os.uname().release)}", background=colors[5]),
+                widget.Spacer(length=4, background=colors[7]),
+                widget.Clock(format='%A, %Y-%m-%d %I:%M:%S %p', background=colors[5]),
+                widget.Spacer(length=7, background=colors[5]),
             ],
             size=24,
-            background=colors[0][0]
+            background=colors[4][0],
         ),
     ),
 ]
