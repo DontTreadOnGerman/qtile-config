@@ -1,0 +1,7 @@
+mod: mod4
+terminal: urxvt
+browser: firefox
+config_file: /home/dtog/.config/qtile/config.py
+music_player: vlc
+office_suite: libreoffice
+font: Monospace
