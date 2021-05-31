@@ -35,7 +35,7 @@ from libqtile.lazy import lazy
 
 @hook.subscribe.startup
 def autostart():
-    subprocess.run([f'sh', f'/home/dtog/.config/qtile/autostart.sh'])
+    subprocess.run(["sh", "/home/dtog/.config/qtile/autostart.sh"])
 
 
 file = yaml.safe_load(open("/home/dtog/.config/qtile/config.yaml"))
